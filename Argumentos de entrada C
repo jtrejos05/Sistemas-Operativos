@@ -1,0 +1,51 @@
+/****************************
+Autor:Juan Martin Trejos
+Fecha:30/07/2023
+Profesor:Jhon Corredor
+Materia: Sistemas Operativos
+Tema:Argumentos de entrada en c
+*****************************/
+
+
+#include <stdio.h>
+int main(int argc, char*argv[]){
+int telefono;
+  char nombre[15];
+  float notas;
+  long cedula;
+  //Pedir datos 
+printf("Ha ingresado [%d]: \n\n");
+printf("Ha ingresado la edad: %s\n\n", argc);
+printf("\nHa ingresado el mes: %s\n\n",argv[1]);
+ printf("Digite el numero de su telefono: ");
+  scanf("%d",&telefono);
+  printf("Escriba su nombre: ");
+  scanf("%s",nombre);
+  printf("Digite su promedio actual de notas: ");
+  scanf("%f",&notas);
+  printf("Digite su cedula: ");
+  
+  //Imprimir los datos
+  printf("\nHas introducido:\n");
+    printf("Número entero(Telefono): %d\n", telefono);
+    printf("Número flotante(notas): %f\n", notas);
+    printf("Cadena(nombre): %s\n", nombre);
+  
+  
+int x=102;
+  int *p=&x;
+  printf("\n El valor de X es: %d \n",x);
+  printf("\n La direccion de X es: %p \n\n", p);
+  
+  int vector[]={5,10,20,30,40,50,80};
+  int *p1=vector;
+  int *p2=vector*2;
+  int diferencia=p2-p1;
+  
+  printf("\n El valor p2 es de: %p \n", p1);
+  printf("\n El valor p2 es de: %p \n",p2);
+  printf("\n El valor resta de: %d \n",diferencia);
+  
+  
+return 0;
+}
