@@ -1,3 +1,8 @@
+/*********************************
+Autor:Juan Martin Trejos
+Materia:Sitemas Opertaivos
+Descripcion: Funcionalidad del la funcion Calloc
+***********************************/
 #include <stdio.h>
 #include <stdlib.h>
 
