@@ -1,0 +1,93 @@
+Concurrencia explícita
+○ Contienen pasos de procesamiento independientes (a nivel de bloque, sentencia o nivel de expresión) que
+pueden ejecutarse en paralelo;
+○ Desencadenan operaciones de dispositivos que pueden proceder en paralelo con la ejecución del
+programa.
+● Concurrencia implícita
+○ El comportamiento concurrente es especificado por el diseñador del programa
+Un programa concurrente define acciones que pueden ser ejecutadas simultáneamente
+● Un programa paralelo es un programa concurrente que está diseñado para ser ejecutado en hardware
+paralelo
+● Un programa distribuido es un programa paralelo diseñado para ser ejecutado sobre una red de
+procesadores autónomos que no comparten memoria principal (a nivel hardware).
+Vista desde SO
+○ Flujo de instrucciones independiente que es planificado y ejecutado por
+el SO
+● Vista desde el desarrollador de software
+○ Un
+thread puede ser considerado como un
+‘procedimiento’ que se
+ejecuta independiente del programa principal.
+■ Programa secuencial
+● Un único flujo de instrucciones en un programa
+■ Programa Multi-
+thread
+● Un programa con múltiples flujos
+● Multiple threads usan multiple cores/CPUs
+Técnicamente, un hilo es definido como un flujo de instrucciones
+independiente del programa principal, que es planificado y ejecutado por
+el sistema operativo. But what does this mean?
+● To the software developer, the concept of a "procedure" that runs
+independently from its main program may best describe a thread.
+● To go one step further, imagine a main program (a.out) that contains a
+number of procedures. Then imagine all of these procedures being able
+to be scheduled to run simultaneously and/or independently by the
+operating system. That would describe a "multi-threaded" program.
+Existe con los procesos
+● Muere si el proceso muere
+● Usa los recursos del proceso
+● Duplica solo los recursos esenciales para que el SO los
+planifique independientemente.
+● Cada thread mantiene
+■ Stack
+■ Registers
+■ Scheduling properties (e.g. priority)
+■ Set of pending and blocked signals (to allow different react
+differently to signals)
+■ Thread specific data
+En resumen, en un entorno UNIX un thread:
+○ Existe dentro de un proceso y usa los recursos del proceso.
+○ Tiene su propio flujo de control independiente siempre que exista su proceso padre
+y el SO lo soporte.
+○ Duplica sólo los recursos esenciales que necesita para ser planificado de forma
+independiente.
+○ Puede compartir los recursos con otros threads que actúan igualmente
+independientes (y dependientes).
+○ Muere si el proceso padre muere - o algo similar
+○ Es “ligero” porque la mayor parte del overhead ya se ha realizado mediante la
+creación del proceso.
+● Porque los hilos dentro del mismo proceso comparten recursos:
+○ Los cambios realizados por un thread en los recursos compartidos en el sistema
+(ejemplo: cierre de un fichero) serán vistos por todos los demás threads.
+○ Dos punteros con el mismo valor apuntan a los mismos datos.
+○ Reading and writing to the same memory locations is possible, and therefore
+requires explicit synchronization by the programmer.
+Estado compartido
+○ Las variables globales se comparten entre los threads. Cambios
+accidentales pueden ser fatales.
+● Muchas funciones de la library no son seguras para los threads
+○ Funciones de la Library que devuelven punteros a la memoria
+interna estática. E.g. gethostbyname()
+● Falta de robustez
+○ Crash in one thread will crash the entire process.
+Pthreads se definen como un conjunto de tipos de programación
+y llamadas a procedimientos en lenguaje C, implementados con
+la interfaz #include <pthread.h> a una
+library de
+threads.
+Comunicaciones eficientes/intercambio de datos:
+○ La motivación principal para considerar el uso de pthreads en un entorno de HPC es
+lograr un rendimiento óptimo. En particular, si una aplicación está usando MPI para
+comunicaciones en el nodo, existe la posibilidad de que el rendimiento pueda ser
+mejorado usando pthreads en su lugar.
+○ Las bibliotecas MPI suelen implementar la comunicación de tareas en el nodo a
+través de la memoria compartida, lo que implica al menos una operación de copia en
+memoria (proceso a proceso).
+○ En el caso de los pthreads no se requiere una copia de memoria intermedia porque
+los hilos comparten el mismo espacio de direcciones dentro de un solo proceso. No
+hay transferencia de datos en sí. Puede ser tan eficiente como simplemente pasar
+un puntero.
+○ En el peor de los casos, las comunicaciones de los pthreads se convierten más en un
+problema de ancho de banda de caché a CPU o de memoria a CPU. Estas
+velocidades son mucho más altas que las comunicaciones de memoria compartida
+MPI.
