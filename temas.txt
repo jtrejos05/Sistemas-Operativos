@@ -91,3 +91,31 @@ un puntero.
 problema de ancho de banda de caché a CPU o de memoria a CPU. Estas
 velocidades son mucho más altas que las comunicaciones de memoria compartida
 MPI.
+Las aplicaciones que usen pthreads ofrecen mayor ganancia de rendimiento y ventajas
+prácticas sobre las aplicaciones sin pthreads:
+○ Trabajo solapado CPU con E/S
+■ Ej.: un programa puede tener secciones en las que realiza operaciones de E/S
+prolongadas. Mientras un pthread espera la completitud de la llamada E/S, los
+demás pthreads hacen uso del CPU.
+○ Prioridad/Planificación en tiempo real
+■ Las tareas más importantes pueden ser planificadas para sustituir o interrumpir
+las tareas con menor prioridad.
+○ Manejo de eventos asincrónicos:
+■ Las tareas que dan servicio a eventos de frecuencia y duración indeterminadas
+pueden ser intercaladas. Ej.: un servidor web puede transferir datos de peticiones
+anteriores, en tanto gestiona la llegada de nuevas peticiones.
+■ Ejemplo perfecto es un navegador web: múltiples tareas intercaladas pueden
+estar ejecutándose al mismo tiempo, cada tarea puede variar en prioridad.
+Gestión de pthreads: Rutinas que trabajan directamente en los hilos: crear, separar,
+unir, etc. También incluyen funciones para establecer/consultar los atributos de los
+hilos (unirse, programar, etc.)
+● Mutexes: Rutinas que se ocupan de la sincronización, denominadas "mutex", que es
+una abreviatura de "exclusión mutua". Las funciones mutex permiten crear, destruir,
+bloquear y desbloquear los mutex. Éstas se complementan con funciones de
+atributo mutex que establecen o modifican los atributos asociados a los mutex.
+● Variables de condición: Rutinas que dirigen las comunicaciones entre los hilos que
+comparten un mutex. Basadas en condiciones especificadas por el programador.
+Este grupo incluye funciones para crear, destruir, esperar y señalar basadas en
+valores de variables especificadas. También se incluyen funciones para
+establecer/consultar los atributos de las variables de condición.
+● Sincronización: Rutinas que gestionan los bloqueos y barreras de lectura/escritura.
