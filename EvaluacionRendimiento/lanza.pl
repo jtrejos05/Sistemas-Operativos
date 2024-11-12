@@ -4,8 +4,7 @@
 #     Autor: J. Corredor
 #     Fecha: Febrero 2024
 #     Materia: Sistemas Operativos
-#     Tema: Taller de Evaluación de Rendimiento
-#     Fichero: script automatización ejecución por lotes 
+#     Fichero: Archivo para ejecutar autamaticamente los datos
 #****************************************************************/
 
 
