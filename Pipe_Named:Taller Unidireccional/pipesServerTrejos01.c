@@ -26,16 +26,13 @@ Tema: Pipe named o FIFO
  * 
  */
 int main() {
-    int fd; /**< Descriptor de archivo del archivo FIFO. */
-    char leerbuf[80]; /**< Buffer para leer mensajes del archivo FIFO. */
-    char fin[10]; /**< Cadena que contiene el mensaje "FIN". */
+    int fd; // Descriptor de archivo del archivo FIFO. 
+    char leerbuf[80]; //Buffer para leer mensajes del archivo FIFO. 
+    char fin[10]; // Cadena que contiene el mensaje "FIN". 
     int final; /**< Variable para almacenar el resultado de la comparación de cadenas. */
     int leer_bytes; /**< Número de bytes leídos del archivo FIFO. */
     
-    /* Create the FIFO if it does not exist */
     /**
-     * 
-     * 
      * Utiliza la función mknod para crear el archivo FIFO con permisos de lectura y escritura
      * para el propietario y grupo, y permisos de lectura para otros.
      */

@@ -14,16 +14,13 @@ Tema: Pipe named
 
 /**
  * @def   FIFO_FILE
- * @brief Nombre del archivo FIFO.
  */
 #define FIFO_FILE "MYFIFO"
 
 /**
- * @brief Función principal del programa cliente.
  * 
  * Esta función crea una FIFO y envía mensajes a través de ella hasta que el usuario ingresa "fin".
  * 
- * @return int Código de salida del programa.
  */
 int main() {
     int fd; /**< Descriptor de archivo de la FIFO. */
