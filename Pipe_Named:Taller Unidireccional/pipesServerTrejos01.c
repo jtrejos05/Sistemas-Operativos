@@ -1,6 +1,6 @@
 /***********************************************************
 Fecha: 24/10/2024
-Autor: Juan MArtin Trejos
+Autor: Juan Martin Trejos
 Materia: Sistemas Operativos
 Tema: Pipe named o FIFO o tuberia
 ***********************************************************/
