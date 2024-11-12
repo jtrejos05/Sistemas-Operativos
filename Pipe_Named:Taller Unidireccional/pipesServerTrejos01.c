@@ -2,7 +2,7 @@
 Fecha: 24/10/2024
 Autor: Juan Martin Trejos
 Materia: Sistemas Operativos
-Tema: Pipe named o FIFO o tuberia
+Tema: Pipe named o FIFO
 ***********************************************************/
 
 #include <stdio.h>
