@@ -1,13 +1,11 @@
 /**************************************************************
 		Pontificia Universidad Javeriana
-	Autor: J corredor 
+	Autor: Jhon  Corredor 
 	Fecha: Noviembre 2024
-	Materia: Sistemas Operativos
 	Tema: Taller de Evaluación de Rendimiento
 	Fichero: fuente de multiplicación de matrices NxN por hilos.
 	Objetivo: Evaluar el tiempo de ejecución del 
-		      algoritmo clásico de multiplicación de matrices.
-			  Se implementa con la Biblioteca POSIX Pthreads
+	algoritmo clásico de multiplicación de matrices.
 ****************************************************************/
 
 #include <stdio.h>
